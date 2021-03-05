@@ -5,9 +5,10 @@
 
     <!-- 레이아웃 데이터 결합 -->
     <data>
+
         <variable
-            name="viewModel"
-            type="com.example.openweathermap.viewmodel.MainViewModel" />
+            name="activity"
+            type="com.example.openweathermap.view.MainActivity" />
     </data>
 
     <LinearLayout
@@ -19,7 +20,6 @@
 
         <Button
             android:id="@+id/btn_search"
-            android:onClick="@{()-> viewModel.onSearchClicked()}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -45,9 +45,7 @@
                     android:id="@+id/list_city"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scrollbars="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    />
+                    android:scrollbars="vertical" />
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         </LinearLayout>
