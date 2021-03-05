@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- Whites/Pastels -->
+    <color name="Snow">#FFfffafa</color>
+    <color name="Snow2">#FFeee9e9</color>
+    <color name="Snow3">#FFcdc9c9</color>
+    <color name="Snow4">#FF8b8989</color>
+    <color name="GhostWhite">#FFf8f8ff</color>
+    <color name="WhiteSmoke">#FFf5f5f5</color>
+    <color name="Gainsboro">#DCDCDC</color>
+    <color name="FloralWhite">#FFfffaf0</color>
+    <color name="OldLace">#FFfdf5e6</color>
+    <color name="Linen">#FFfaf0e6</color>
+    <color name="AntiqueWhite">#FFfaebd7</color>
+    <color name="AntiqueWhite2">#FFeedfcc</color>
+    <color name="AntiqueWhite3">#FFcdc0b0</color>
+    <color name="AntiqueWhite4">#FF8b8378</color>
+    <color name="PapayaWhip">#FFffefd5</color>
+    <color name="BlanchedAlmond">#FFffebcd</color>
+    <color name="Bisque">#FFffe4c4</color>
+    <color name="Bisque2">#FFeed5b7</color>
+    <color name="Bisque3">#FFcdb79e</color>
+    <color name="Bisque4">#FF8b7d6b</color>
+    <color name="PeachPuff">#FFffdab9</color>
+    <color name="PeachPuff2">#FFeecbad</color>
+    <color name="PeachPuff3">#FFcdaf95</color>
+    <color name="PeachPuff4">#FF8b7765</color>
+    <color name="NavajoWhite">#FFffdead</color>
+    <color name="Moccasin">#FFffe4b5</color>
+    <color name="Cornsilk">#FFfff8dc</color>
+    <color name="Cornsilk2">#FFeee8dc</color>
+    <color name="Cornsilk3">#FFcdc8b1</color>
+    <color name="Cornsilk4">#FF8b8878</color>
+    <color name="Ivory">#FFfffff0</color>
+    <color name="Ivory2">#FFeeeee0</color>
+    <color name="Ivory3">#FFcdcdc1</color>
+    <color name="Ivory4">#FF8b8b83</color>
+    <color name="LemonChiffon">#FFfffacd</color>
+    <color name="Seashell">#FFfff5ee</color>
+    <color name="Seashell2">#FFeee5de</color>
+    <color name="Seashell3">#FFcdc5bf</color>
+    <color name="Seashell4">#FF8b8682</color>
+    <color name="Honeydew">#FFf0fff0</color>
+    <color name="Honeydew2">#FFe0eee0</color>
+    <color name="Honeydew3">#FFc1cdc1</color>
+    <color name="Honeydew4">#FF838b83</color>
+    <color name="MintCream">#FFf5fffa</color>
+    <color name="Azure">#FFf0ffff</color>
+    <color name="AliceBlue">#FFf0f8ff</color>
+    <color name="Lavender">#FFe6e6fa</color>
+    <color name="LavenderBlush">#FFfff0f5</color>
+    <color name="MistyRose">#FFffe4e1</color>
+    <color name="White">#FFffffff</color>
+
+    <!-- Grays -->
+    <color name="Black">#FF000000</color>
+    <color name="DarkSlateGray">#FF2f4f4f</color>
+    <color name="DimGray">#FF696969</color>
+    <color name="SlateGray">#FF708090</color>
+    <color name="LightSlateGray">#FF778899</color>
+    <color name="Gray">#FFbebebe</color>
+    <color name="LightGray">#FFd3d3d3</color>
+
+    <!-- Blues -->
+    <color name="MidnightBlue">#FF191970</color>
+    <color name="Navy">#FF000080</color>
+    <color name="Cornflower">#FF6495ed</color>
+    <color name="DarkSlate">#FF483d8b</color>
+    <color name="SlateBlue">#FF6a5acd</color>
+    <color name="MediumSlate">#FF7b68ee</color>
+    <color name="LightSlate">#FF8470ff</color>
+    <color name="MediumBlue">#FF0000cd</color>
+    <color name="RoyalBlue">#FF4169e1</color>
+    <color name="Blue">#FF0000ff</color>
+    <color name="DodgerBlue">#FF1e90ff</color>
+    <color name="DodgerDeepBlue">#FF0F5DD8</color>
+    <color name="DeepSkyBlue">#FF00bfff</color>
+    <color name="SkyBlue">#FF87ceeb</color>
+    <color name="LightSkyBlue">#FF87cefa</color>
+    <color name="SteelBlue">#FF4682b4</color>
+    <color name="LightSteelBlue">#FFb0c4de</color>
+    <color name="LightBlue">#FFadd8e6</color>
+    <color name="PowderBlue">#FFb0e0e6</color>
+    <color name="PaleTurquoise">#FFafeeee</color>
+    <color name="DarkTurquoise">#FF00ced1</color>
+    <color name="MediumTurquoise">#FF48d1cc</color>
+    <color name="Turquoise">#FF40e0d0</color>
+    <color name="Cyan">#FF00ffff</color>
+    <color name="LightCyan">#FFe0ffff</color>
+    <color name="CadetBlue">#FF5f9ea0</color>
+    <color name="Teal">#FF008080</color>
+
+    <!-- Greens -->
+    <color name="MediumAquamarine">#FF66cdaa</color>
+    <color name="Aquamarine">#FF7fffd4</color>
+    <color name="DarkGreen">#FF006400</color>
+    <color name="DarkOliveGreen">#FF556b2f</color>
+    <color name="DarkSeaGreen">#FF8fbc8f</color>
+    <color name="SeaGreen">#FF2e8b57</color>
+    <color name="MediumSeaGreen">#FF3cb371</color>
+    <color name="LightSeaGreen">#FF20b2aa</color>
+    <color name="PaleGreen">#FF98fb98</color>
+    <color name="SpringGreen">#FF00ff7f</color>
+    <color name="LawnGreen">#FF7cfc00</color>
+    <color name="Chartreuse">#FF7fff00</color>
+    <color name="MediumSpringGreen">#FF00fa9a</color>
+    <color name="GreenYellow">#FFadff2f</color>
+    <color name="LimeGreen">#FF32cd32</color>
+    <color name="YellowGreen">#FF9acd32</color>
+    <color name="ForestGreen">#FF228b22</color>
+    <color name="OliveDrab">#FF6b8e23</color>
+    <color name="DarkKhaki">#FFbdb76b</color>
+    <color name="Khaki">#FFf0e68c</color>
+    <color name="Green">#FF008000</color>
+    <color name="Olive">#FF808000</color>
+    <color name="Lime">#FF00FF00</color>
+
+    <!-- Yellow -->
+    <color name="PaleGoldenrod">#FFeee8aa</color>
+    <color name="LightGoldenrodYellow">#FFfafad2</color>
+    <color name="LightYellow">#FFffffe0</color>
+    <color name="Yellow">#FFffff00</color>
+    <color name="Gold">#FFffd700</color>
+    <color name="LightGoldenrod">#FFeedd82</color>
+    <color name="Goldenrod">#FFdaa520</color>
+    <color name="DarkGoldenrod">#FFb8860b</color>
+
+    <!-- Browns -->
+    <color name="RosyBrown">#FFbc8f8f</color>
+    <color name="IndianRed">#FFcd5c5c</color>
+    <color name="SaddleBrown">#FF8b4513</color>
+    <color name="Sienna">#FFa0522d</color>
+    <color name="Peru">#FFcd853f</color>
+    <color name="BurlyWood">#FFdeb887</color>
+    <color name="Beige">#FFf5f5dc</color>
+    <color name="Wheat">#FFf5deb3</color>
+    <color name="SandyBrown">#FFf4a460</color>
+    <color name="Tan">#FFd2b48c</color>
+    <color name="Chocolate">#FFd2691e</color>
+    <color name="Firebrick">#FFb22222</color>
+    <color name="Brown">#FFa52a2a</color>
+
+    <!-- Oranges -->
+    <color name="DarkSalmon">#FFe9967a</color>
+    <color name="Salmon">#FFfa8072</color>
+    <color name="LightSalmon">#FFffa07a</color>
+    <color name="Orange">#FFff7f00</color>
+    <color name="Orange2">#FFffa500</color>
+    <color name="DarkOrange">#FFff8c00</color>
+    <color name="Coral">#FFff7f50</color>
+    <color name="LightCoral">#FFf08080</color>
+    <color name="Tomato">#FFff6347</color>
+    <color name="OrangeRed">#FFff4500</color>
+    <color name="Red">#FFff0000</color>
+
+    <!-- Pinks/Violets -->
+    <color name="HotPink">#FFff69b4</color>
+    <color name="DeepPink">#FFff1493</color>
+    <color name="Pink">#FFffc0cb</color>
+    <color name="LightPink">#FFffb6c1</color>
+    <color name="PaleVioletRed">#FFdb7093</color>
+    <color name="Maroon">#FFb03060</color>
+    <color name="MediumVioletRed">#FFc71585</color>
+    <color name="VioletRed">#FFd02090</color>
+    <color name="Violet">#FFee82ee</color>
+    <color name="Plum">#FFdda0dd</color>
+    <color name="Orchid">#FFda70d6</color>
+    <color name="MediumOrchid">#FFba55d3</color>
+    <color name="DarkOrchid">#FF9932cc</color>
+    <color name="DarkViolet">#FF9400d3</color>
+    <color name="BlueViolet">#FF8a2be2</color>
+    <color name="Purple">#FFa020f0</color>
+    <color name="MediumPurple">#FF9370db</color>
+    <color name="Thistle">#FFd8bfd8</color>
+    <color name="Fuchsia">#FFFF00FF</color>
+
+    <!-- 투명도 계산
+      100% - FF
+      95% - F2
+      90% - E6
+      85% - D9
+      80% - CC
+      75% - BF
+      70% - B3
+      65% - A6
+      60% - 99
+      55% - 8C
+      50% - 80
+      45% - 73
+      40% - 66
+      35% - 59
+      30% - 4D
+      25% - 40
+      20% - 33
+      15% - 26
+      10% - 1A
+      5% - 0D
+      0% - 00
+      -->
+</resources>
