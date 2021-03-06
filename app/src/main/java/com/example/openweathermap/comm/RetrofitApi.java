@@ -1,5 +1,7 @@
 package com.example.openweathermap.comm;
 
+import com.example.openweathermap.model.CityInfo;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -12,6 +14,6 @@ public interface RetrofitApi {
      *
      ***********************************************/
     @GET("weather/")
-    Call<ResponseBody> getCurrentWeatherData(@Query("id") String id, @Query("appid") String appid);
+    Call<CityInfo> getCurrentWeatherData(@Query("id") String id, @Query("appid") String appid);
 
 }

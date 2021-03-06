@@ -86,7 +86,6 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder>{
         public ViewHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
 
-//            rowItem = itemView.findViewById(R.id.rowItem);
             tvCountryCode = itemView.findViewById(R.id.tv_country_code);
             tvCityName = itemView.findViewById(R.id.tv_city_name);
             this.onItemClickListener = onItemClickListener;
@@ -98,7 +97,6 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder>{
             mPosition = getAdapterPosition();
             mCity = mItems.get(mPosition);
 
-            Logger.d("setItem");
             tvCountryCode.setText(item.getCountry());
             tvCityName.setText(item.getName());
         }
@@ -106,7 +104,6 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder>{
         @Override
         public void onClick(View view) {
             onItemClickListener.onItemClick(mCity.getId());
-
         }
     }
 }

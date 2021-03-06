@@ -55,24 +55,22 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         mainViewModel = new ViewModelProvider(this, viewModelFactory).get(MainViewModel.class);
 
         String cityList = JsonUtil.getJsonFromAssets(this, "citylist.json");
-//        Logger.d("## cityList ==> " + cityList);
 
-        Type listType = new TypeToken<ArrayList<City>>() {
-        }.getType();
+        Type listType = new TypeToken<ArrayList<City>>() {}.getType();
         ArrayList<City> cities = new Gson().fromJson(cityList, listType);
-//        Logger.d("## users size ==> " + cities.size());
-
-
 
         // 뷰 어뎁터 설정
         mCityAdapter = new CityAdapter(cities, this);
         binding.listCity.setAdapter(mCityAdapter);
-//        mainViewModel.setOnItemClickListener(this);
+
+        binding.srlRefresh.setOnRefreshListener(() -> {
+            binding.listCity.setAdapter(mCityAdapter);
+            binding.srlRefresh.setRefreshing(false);
+        });
     }
 
     @Override
     public void onItemClick(String id) {
-        Logger.d("## onItemClick ==> " + id);
         Intent intent = new Intent(this, WeatherDetailActivity.class);
         intent.putExtra("id", id);
         startActivity(intent);
