@@ -43,6 +43,45 @@
                     android:layout_height="0dp"
                     android:layout_weight="4">
 
+                    <TextView
+                        android:id="@+id/tv_country"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:gravity="center_vertical"
+                        android:text="@{viewModel.country}"
+                        android:textColor="@color/Black"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.2"
+                        app:layout_constraintHorizontal_bias="0.243"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.047"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.35"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_city"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="@{viewModel.city}"
+                        android:textColor="@color/Black"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.2"
+                        app:layout_constraintHorizontal_bias="0.634"
+                        app:layout_constraintStart_toEndOf="@+id/iv_weathe_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.047"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.35"></TextView>
+
                     <ImageView
                         android:id="@+id/iv_weathe_icon"
                         android:layout_width="0dp"
@@ -51,12 +90,12 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.2"
-                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintHorizontal_bias="0.186"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.3"
+                        app:layout_constraintVertical_bias="0.299"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.2"></ImageView>
+                        app:layout_constraintWidth_percent="0.15"></ImageView>
 
                     <TextView
                         android:id="@+id/tv_description"
@@ -71,12 +110,12 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.2"
-                        app:layout_constraintHorizontal_bias="0.242"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/iv_weathe_icon"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.3"
+                        app:layout_constraintVertical_bias="0.299"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.5"></TextView>
+                        app:layout_constraintWidth_percent="0.565"></TextView>
 
                     <TextView
                         android:id="@+id/tv_temp"
@@ -86,15 +125,15 @@
                         android:includeFontPadding="false"
                         android:text="@{viewModel.temp}"
                         android:textColor="@color/Black"
-                        android:textSize="80sp"
+                        android:textSize="60sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/tv_description"
                         app:layout_constraintHeight_default="percent"
-                        app:layout_constraintHeight_percent="0.3"
+                        app:layout_constraintHeight_percent="0.2"
                         app:layout_constraintStart_toStartOf="@+id/iv_weathe_icon"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.7"></TextView>
+                        app:layout_constraintVertical_bias="0.6"></TextView>
 
                     <TextView
                         android:id="@+id/tv_feels_like"
@@ -109,9 +148,28 @@
                         app:layout_constraintEnd_toEndOf="@+id/tv_description"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.2"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/iv_weathe_icon"
                         app:layout_constraintTop_toBottomOf="@id/tv_temp"
-                        app:layout_constraintVertical_bias="0.7"></TextView>
+                        app:layout_constraintVertical_bias="0.0"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_min_max"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:includeFontPadding="false"
+                        android:text="@{viewModel.minMax}"
+                        android:textColor="@color/Gray"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_description"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.1"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/iv_weathe_icon"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_feels_like"
+                        app:layout_constraintVertical_bias="1.0"></TextView>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -133,11 +191,161 @@
                         card_view:cardElevation="5dp">
 
                         <LinearLayout
-                            android:weightSum="4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_margin="10dp"
                             android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:weightSum="4">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:id="@+id/tv_wind"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:includeFontPadding="false"
+                                    android:text="Wind (풍속, 풍향)"
+                                    android:textColor="@color/Black"
+                                    android:textSize="20sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.3"
+                                    app:layout_constraintWidth_default="percent"
+                                    app:layout_constraintWidth_percent="0.5"></TextView>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.speedDeg}"
+                                    android:textColor="@color/Black"
+                                    android:textSize="20sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.603"
+                                    app:layout_constraintStart_toEndOf="@+id/tv_wind"
+                                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:id="@+id/tv_pressure"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:includeFontPadding="false"
+                                    android:text="Pressure (기압)"
+                                    android:textColor="@color/Black"
+                                    android:textSize="20sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.3"
+                                    app:layout_constraintWidth_default="percent"
+                                    app:layout_constraintWidth_percent="0.5"></TextView>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.pressure}"
+                                    android:textColor="@color/Black"
+                                    android:textSize="20sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.603"
+                                    app:layout_constraintStart_toEndOf="@+id/tv_pressure"
+                                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:id="@+id/tv_humidity"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:includeFontPadding="false"
+                                    android:text="Humidity (습도)"
+                                    android:textColor="@color/Black"
+                                    android:textSize="20sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.3"
+                                    app:layout_constraintWidth_default="percent"
+                                    app:layout_constraintWidth_percent="0.5"></TextView>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.humidity}"
+                                    android:textColor="@color/Black"
+                                    android:textSize="20sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.603"
+                                    app:layout_constraintStart_toEndOf="@id/tv_humidity"
+                                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:id="@+id/tv_visibility"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:includeFontPadding="false"
+                                    android:text="Visibility (가시성)"
+                                    android:textColor="@color/Black"
+                                    android:textSize="20sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.3"
+                                    app:layout_constraintWidth_default="percent"
+                                    app:layout_constraintWidth_percent="0.5"></TextView>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:includeFontPadding="false"
+                                    android:text="@{viewModel.visibility}"
+                                    android:textColor="@color/Black"
+                                    android:textSize="20sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.603"
+                                    app:layout_constraintStart_toEndOf="@id/tv_visibility"
+                                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </LinearLayout>
 

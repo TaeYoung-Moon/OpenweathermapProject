@@ -9,12 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.openweathermap.Listener.OnItemClickListener;
+import com.example.openweathermap.listener.OnItemClickListener;
 import com.example.openweathermap.R;
-import com.example.openweathermap.databinding.ActivityMainBinding;
 import com.example.openweathermap.model.City;
-import com.example.openweathermap.viewmodel.MainViewModel;
-import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 

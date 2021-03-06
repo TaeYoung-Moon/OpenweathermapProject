@@ -14,7 +14,7 @@ public class CityInfo {
     @SerializedName("main")
     private Main main;
     @SerializedName("visibility")
-    private String visibility;
+    private float visibility;
     @SerializedName("wind")
     private Wind wind;
     @SerializedName("clouds")
@@ -83,11 +83,11 @@ public class CityInfo {
         this.main = main;
     }
 
-    public String getVisibility() {
+    public float getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(String visibility) {
+    public void setVisibility(float visibility) {
         this.visibility = visibility;
     }
 

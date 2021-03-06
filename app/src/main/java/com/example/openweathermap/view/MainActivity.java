@@ -3,32 +3,22 @@ package com.example.openweathermap.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.openweathermap.Listener.OnItemClickListener;
+import com.example.openweathermap.listener.OnItemClickListener;
 import com.example.openweathermap.R;
 import com.example.openweathermap.adapter.CityAdapter;
-import com.example.openweathermap.comm.Config;
-import com.example.openweathermap.comm.RetrofitClient;
 import com.example.openweathermap.databinding.ActivityMainBinding;
 import com.example.openweathermap.model.City;
 import com.example.openweathermap.util.JsonUtil;
 import com.example.openweathermap.viewmodel.MainViewModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.orhanobut.logger.Logger;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
@@ -67,8 +57,9 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             binding.listCity.setAdapter(mCityAdapter);
             binding.srlRefresh.setRefreshing(false);
         });
-    }
 
+
+    }
     @Override
     public void onItemClick(String id) {
         Intent intent = new Intent(this, WeatherDetailActivity.class);

@@ -12,9 +12,9 @@ public class Main {
     @SerializedName("temp_max")
     private float tempMax;
     @SerializedName("pressure")
-    private float pressure;
+    private int pressure;
     @SerializedName("humidity")
-    private float humidity;
+    private int humidity;
 
     @Override
     public String toString() {
@@ -60,19 +60,19 @@ public class Main {
         this.tempMax = tempMax;
     }
 
-    public float getPressure() {
+    public int getPressure() {
         return pressure;
     }
 
-    public void setPressure(float pressure) {
+    public void setPressure(int pressure) {
         this.pressure = pressure;
     }
 
-    public float getHumidity() {
+    public int getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(float humidity) {
+    public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
 }
