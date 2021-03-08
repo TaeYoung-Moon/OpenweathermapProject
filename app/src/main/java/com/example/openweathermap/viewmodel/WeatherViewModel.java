@@ -2,11 +2,17 @@ package com.example.openweathermap.viewmodel;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
+import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
+import com.bumptech.glide.Glide;
+import com.example.openweathermap.LoadingDialog;
 import com.example.openweathermap.model.CityInfo;
 import com.example.openweathermap.model.DescriptionKo;
 import com.example.openweathermap.model.WindType;
@@ -33,6 +39,8 @@ public class WeatherViewModel extends ViewModel {
     public static ObservableField<String> speedDeg = new ObservableField<>();
     public static ObservableField<String> deg = new ObservableField<>();
 
+    public static ObservableField<String> testurl = new ObservableField<>();
+
     public WeatherViewModel(Context context) {
         this.mContext = context;
     }
@@ -41,7 +49,8 @@ public class WeatherViewModel extends ViewModel {
 
     }
 
-    public void initCityInfo(CityInfo cityInfo) {
+    public void initCityInfo(CityInfo cityInfo, String url) {
+
         Locale l = new Locale("", cityInfo.getSys().getCountry());
         description.set(getDescriptionKo(cityInfo.getWeathers().get(0).getDescription()));
         temp.set(Math.round(tempConversion(cityInfo.getMain().getTemp())) + " ℃");
@@ -53,6 +62,9 @@ public class WeatherViewModel extends ViewModel {
         humidity.set(" : " + cityInfo.getMain().getHumidity() + "%");
         visibility.set(" : " + meterToKilometer(cityInfo.getVisibility()) + "km");
         speedDeg.set(" :  " + cityInfo.getWind().getSpeed() + "m/s" + " " + getWindDirection(cityInfo.getWind().getDeg()));
+
+
+        testurl.set(url);
 
     }
 
@@ -86,6 +98,17 @@ public class WeatherViewModel extends ViewModel {
     private String getDescriptionKo(String description) {
         DescriptionKo descriptionKo = DescriptionKo.value(description);
         return descriptionKo.getKr();
+    }
+
+    @BindingAdapter({"bind:imageUrl"})
+
+    public static void loadImage(ImageView imageView, String imageUrl) {
+
+        Glide.with(imageView.getContext())
+                .load(imageUrl)
+                .centerCrop()
+                .into(imageView);
+
     }
 
 }
