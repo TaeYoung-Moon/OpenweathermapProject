@@ -10,12 +10,11 @@ import com.bumptech.glide.Glide;
 import com.example.openweathermap.comm.Config;
 import com.example.openweathermap.comm.RetrofitClient;
 import com.example.openweathermap.listener.OnIntentListener;
+import com.example.openweathermap.model.City;
 import com.example.openweathermap.model.CityInfo;
 import com.example.openweathermap.model.DescriptionKo;
 import com.example.openweathermap.model.WindType;
 import com.orhanobut.logger.Logger;
-
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +39,7 @@ public class WeatherViewModel extends ViewModel {
     public static ObservableField<String> iconUrl = new ObservableField<>();
 
     private OnIntentListener onIntentListener;
+    private City mCity = new City();
 
     public WeatherViewModel() {
 
@@ -80,17 +80,17 @@ public class WeatherViewModel extends ViewModel {
     public void initCityInfo(CityInfo cityInfo, String url) {
         Logger.d("## initCityInfo cityInfo ==> " + cityInfo.toString());
 
-        Locale l = new Locale("", cityInfo.getSys().getCountry());
+        country.set(mCity.getCountryName(cityInfo.getSys().getCountry()));
         description.set(getDescriptionKo(cityInfo.getWeathers().get(0).getDescription()));
         temp.set(Math.round(tempConversion(cityInfo.getMain().getTemp())) + " ℃");
         feelsLike.set("Feels like " + Math.round(tempConversion(cityInfo.getMain().getFeelsLike())) + " ℃");
-        country.set(l.getDisplayCountry() + " (" + cityInfo.getSys().getCountry() + ")");
+
         city.set(cityInfo.getName());
         minMax.set("min " + Math.round(tempConversion(cityInfo.getMain().getTempMin())) + " ℃" + " / " + "max " + Math.round(tempConversion(cityInfo.getMain().getTempMax())) + " ℃");
-        pressure.set(" : " + cityInfo.getMain().getPressure() + "hpa");
-        humidity.set(" : " + cityInfo.getMain().getHumidity() + "%");
-        visibility.set(" : " + meterToKilometer(cityInfo.getVisibility()) + "km");
-        speedDeg.set(" :  " + cityInfo.getWind().getSpeed() + "m/s" + " " + getWindDirection(cityInfo.getWind().getDeg()));
+        pressure.set(" :    " + cityInfo.getMain().getPressure() + "hpa");
+        humidity.set(" :    " + cityInfo.getMain().getHumidity() + "%");
+        visibility.set(" :    " + meterToKilometer(cityInfo.getVisibility()) + "km");
+        speedDeg.set(" :     " + cityInfo.getWind().getSpeed() + "m/s" + " " + getWindDirection(cityInfo.getWind().getDeg()));
         iconUrl.set(url);
 
         onIntentListener.onIntent();
@@ -124,6 +124,11 @@ public class WeatherViewModel extends ViewModel {
         return windType.getName();
     }
 
+    /**
+     * 날씨 상세정보 한글로 변환
+     * @param description
+     * @return
+     */
     private String getDescriptionKo(String description) {
         DescriptionKo descriptionKo = DescriptionKo.value(description);
         return descriptionKo.getKr();

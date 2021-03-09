@@ -23,14 +23,13 @@ public class WeatherDetailActivity extends AppCompatActivity {
     }
 
     public void init() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_weather_detail);
-        binding.setViewModel(new WeatherViewModel());
-        binding.executePendingBindings();
         if (viewModelFactory == null) {
             viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         }
         weatherViewModel = new ViewModelProvider(this, viewModelFactory).get(WeatherViewModel.class);
 
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_weather_detail);
+        binding.setViewModel(weatherViewModel);
+        binding.executePendingBindings();
     }
-
 }

@@ -140,19 +140,13 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
         public void setItem(City item) {
             mPosition = getAdapterPosition();
             mCity = mFilteredItems.get(mPosition);
-
-            tvCountryCode.setText(item.getCountry());
+            tvCountryCode.setText(item.getCountryName(item.getCountry()));
             tvCityName.setText(item.getName());
         }
 
         @Override
         public void onClick(View view) {
-
-            if (!mCity.getCountry().isEmpty()) {
-                onItemClickListener.onItemClick(mCity.getId());
-            } else {
-                //TODO 국가가 아닌 대륙입니다.
-            }
+            onItemClickListener.onItemClick(mCity.getId());
         }
     }
 }

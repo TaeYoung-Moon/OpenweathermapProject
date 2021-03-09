@@ -36,7 +36,7 @@
             app:startIconTint="@color/Chocolate">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ev_serarch"
+                android:id="@+id/tie_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -92,13 +92,6 @@
                 android:layout_marginRight="12dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
-
-                <!--                <androidx.recyclerview.widget.RecyclerView-->
-                <!--                    android:id="@+id/list_city"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="match_parent"-->
-                <!--                    android:scrollbars="vertical"-->
-                <!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
 
                 <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
                     android:id="@+id/list_city"

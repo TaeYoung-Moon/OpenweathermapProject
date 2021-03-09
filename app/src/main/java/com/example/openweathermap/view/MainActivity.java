@@ -1,18 +1,18 @@
 package com.example.openweathermap.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-import com.example.openweathermap.listener.OnItemClickListener;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.openweathermap.R;
 import com.example.openweathermap.adapter.CityAdapter;
 import com.example.openweathermap.databinding.ActivityMainBinding;
+import com.example.openweathermap.listener.OnItemClickListener;
 import com.example.openweathermap.model.City;
 import com.example.openweathermap.util.JsonUtil;
 import com.example.openweathermap.viewmodel.MainViewModel;
@@ -23,7 +23,6 @@ import com.orhanobut.logger.Logger;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener, TextWatcher {
 
@@ -42,18 +41,17 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     @Override
     protected void onResume() {
         super.onResume();
-        binding.evSerarch.setText("");
+        binding.tieSearch.setText("");
     }
 
     public void init() {
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setViewModel(new MainViewModel(this));
-        binding.executePendingBindings();
         if (viewModelFactory == null) {
             viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         }
         mainViewModel = new ViewModelProvider(this, viewModelFactory).get(MainViewModel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setViewModel(mainViewModel);
+        binding.executePendingBindings();
 
         String cityList = JsonUtil.getJsonFromAssets(this, "citylist.json");
 
@@ -61,13 +59,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         }.getType();
         ArrayList<City> cities = new Gson().fromJson(cityList, listType);
 
-        Collections.sort(cities, new Comparator<City>() {
-            @Override
-            public int compare(City lhs, City rhs) {
-                return lhs.getCountry().compareTo(rhs.getCountry());
-            }
-        });
-
+        Collections.sort(cities, (obj1, obj2) -> obj1.getCountry().compareTo(obj2.getCountry()));
 
         // 뷰 어뎁터 설정
         mCityAdapter = new CityAdapter(cities, this);
@@ -78,11 +70,9 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             binding.srlRefresh.setRefreshing(false);
         });
 
-        binding.evSerarch.addTextChangedListener(this);
-
+        binding.tieSearch.addTextChangedListener(this);
 
     }
-
 
     @Override
     public void onItemClick(String id) {

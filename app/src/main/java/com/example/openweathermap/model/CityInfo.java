@@ -1,8 +1,10 @@
 package com.example.openweathermap.model;
 
+import com.example.openweathermap.util.StringUtil;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Locale;
 
 public class CityInfo {
     @SerializedName("coord")
@@ -154,5 +156,4 @@ public class CityInfo {
     public void setWind(Wind wind) {
         this.wind = wind;
     }
-
 }

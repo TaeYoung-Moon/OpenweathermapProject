@@ -1,5 +1,9 @@
 package com.example.openweathermap.model;
 
+import com.example.openweathermap.util.StringUtil;
+
+import java.util.Locale;
+
 public class City {
     /**
      * {
@@ -59,5 +63,14 @@ public class City {
         this.coord = coord;
     }
 
+    public String getCountryName(String country) {
+        if (StringUtil.getNvlStr(country, "").isEmpty()) {
+
+            return "대륙 (Continent)";
+        } else {
+            Locale locale = new Locale("", country);
+            return locale.getDisplayCountry() + " (" + country + ")";
+        }
+    }
 
 }

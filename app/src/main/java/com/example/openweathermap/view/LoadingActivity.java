@@ -19,9 +19,12 @@ public class LoadingActivity extends AppCompatActivity implements OnIntentListen
     private WeatherViewModel weatherViewModel;
     private LoadingViewModel loadingViewModel;
     private ViewModelProvider.AndroidViewModelFactory viewModelFactory;
-
     private AcitivtyLoadingBinding binding; // 데이터 바인딩 작업
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,27 +33,27 @@ public class LoadingActivity extends AppCompatActivity implements OnIntentListen
     }
 
     public void init() {
-        binding = DataBindingUtil.setContentView(this, R.layout.acitivty_loading);
-        binding.setViewModel(new LoadingViewModel());
-        binding.executePendingBindings();
         if (viewModelFactory == null) {
             viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         }
         weatherViewModel = new ViewModelProvider(this, viewModelFactory).get(WeatherViewModel.class);
+        loadingViewModel = new ViewModelProvider(this, viewModelFactory).get(LoadingViewModel.class);
         weatherViewModel.setOnIntentListener(this);
 
-        loadingViewModel = new ViewModelProvider(this, viewModelFactory).get(LoadingViewModel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.acitivty_loading);
+        binding.setViewModel(loadingViewModel);
+        binding.executePendingBindings();
 
         Glide.with(this)
                 .asGif()
                 .load(R.raw.loading)
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE) // Glide에서 캐싱한 리소스와 로드할 리소스가 같을때 캐싱된 리소스 사용
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE) // Glide 에서 캐싱한 리소스와 로드할 리소스가 같을때 캐싱된 리소스 사용
                 .into(binding.loadingImage);
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
-        weatherViewModel.getCurrentWeatherData(id);
 
+        weatherViewModel.getCurrentWeatherData(id);
 
     }
 
@@ -60,5 +63,7 @@ public class LoadingActivity extends AppCompatActivity implements OnIntentListen
         startActivity(intent);
 
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+
+        finish();
     }
 }
