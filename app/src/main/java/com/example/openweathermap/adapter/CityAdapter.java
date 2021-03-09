@@ -76,7 +76,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
-                if (charString.isEmpty()) {
+                if (charString.isEmpty()) { 
                     mFilteredItems = mItems;
                 } else {
                     ArrayList<City> filteringList = new ArrayList<>();
