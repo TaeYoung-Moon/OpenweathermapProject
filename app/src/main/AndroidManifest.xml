@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Openweathermap">
         <activity android:name=".view.WeatherDetailActivity"></activity>
+        <activity
+            android:name=".view.LoadingActivity"
+            android:noHistory="true"></activity>
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

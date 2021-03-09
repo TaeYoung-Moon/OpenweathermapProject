@@ -1,18 +1,16 @@
 package com.example.openweathermap.viewmodel;
 
-import android.content.Context;
-import android.os.Build;
-import android.util.DisplayMetrics;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
-import androidx.annotation.RequiresApi;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
 import com.bumptech.glide.Glide;
-import com.example.openweathermap.LoadingDialog;
+import com.example.openweathermap.comm.Config;
+import com.example.openweathermap.comm.RetrofitClient;
+import com.example.openweathermap.listener.OnIntentListener;
+import com.example.openweathermap.listener.OnItemClickListener;
 import com.example.openweathermap.model.CityInfo;
 import com.example.openweathermap.model.DescriptionKo;
 import com.example.openweathermap.model.WindType;
@@ -20,10 +18,11 @@ import com.orhanobut.logger.Logger;
 
 import java.util.Locale;
 
-public class WeatherViewModel extends ViewModel {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private Context mContext;
-    private static String mIconUrl;
+public class WeatherViewModel extends ViewModel {
 
     public static ObservableField<String> description = new ObservableField<>();
     public static ObservableField<String> temp = new ObservableField<>();
@@ -39,17 +38,48 @@ public class WeatherViewModel extends ViewModel {
     public static ObservableField<String> speedDeg = new ObservableField<>();
     public static ObservableField<String> deg = new ObservableField<>();
 
-    public static ObservableField<String> testurl = new ObservableField<>();
+    public static ObservableField<String> iconUrl = new ObservableField<>();
 
-    public WeatherViewModel(Context context) {
-        this.mContext = context;
-    }
+    private OnIntentListener onIntentListener;
 
     public WeatherViewModel() {
 
     }
 
+    public void setOnIntentListener(OnIntentListener onIntentListener) {
+        this.onIntentListener = onIntentListener;
+    }
+
+    public void getCurrentWeatherData(String id) {
+        Call<CityInfo> call = RetrofitClient.getInstance().getApiService().getCurrentWeatherData(id, Config.API_KEY);
+        call.enqueue(new Callback<CityInfo>() {
+            @Override
+            public void onResponse(Call<CityInfo> call, Response<CityInfo> response) {
+                if (response.code() == 404) {
+                    return;
+                } else {
+                    CityInfo cityInfo = response.body();
+                    Logger.d("## onResponse ==> " + cityInfo.toString());
+
+                    String mIconUrl = Config.WEATHER_ICON_BASE_URL + cityInfo.getWeathers().get(0).getIcon() + Config.WEATHER_ICON_EXTENSION;
+                    Logger.d("## mIconUrl ==> " + mIconUrl);
+
+                    initCityInfo(cityInfo, mIconUrl);
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<CityInfo> call, Throwable t) {
+                Logger.e("## onFailure ==> " + t.getMessage());
+            }
+
+        });
+    }
+
     public void initCityInfo(CityInfo cityInfo, String url) {
+        Logger.d("## initCityInfo cityInfo ==> " + cityInfo.toString());
 
         Locale l = new Locale("", cityInfo.getSys().getCountry());
         description.set(getDescriptionKo(cityInfo.getWeathers().get(0).getDescription()));
@@ -62,9 +92,9 @@ public class WeatherViewModel extends ViewModel {
         humidity.set(" : " + cityInfo.getMain().getHumidity() + "%");
         visibility.set(" : " + meterToKilometer(cityInfo.getVisibility()) + "km");
         speedDeg.set(" :  " + cityInfo.getWind().getSpeed() + "m/s" + " " + getWindDirection(cityInfo.getWind().getDeg()));
+        iconUrl.set(url);
 
-
-        testurl.set(url);
+        onIntentListener.onIntent();
 
     }
 
@@ -100,15 +130,11 @@ public class WeatherViewModel extends ViewModel {
         return descriptionKo.getKr();
     }
 
-    @BindingAdapter({"bind:imageUrl"})
-
+    @BindingAdapter({"imageUrl"})
     public static void loadImage(ImageView imageView, String imageUrl) {
-
         Glide.with(imageView.getContext())
                 .load(imageUrl)
                 .centerCrop()
                 .into(imageView);
-
     }
-
 }

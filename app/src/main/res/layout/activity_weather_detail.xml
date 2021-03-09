@@ -86,8 +86,7 @@
                         android:id="@+id/iv_weathe_icon"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        app:imageUrl="@{viewModel.testurl}"
-
+                        app:imageUrl="@{viewModel.iconUrl}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"

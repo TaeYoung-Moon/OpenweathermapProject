@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
     @Override
     public void onItemClick(String id) {
-        Intent intent = new Intent(this, WeatherDetailActivity.class);
+        Intent intent = new Intent(this, LoadingActivity.class);
         intent.putExtra("id", id);
         startActivity(intent);
     }

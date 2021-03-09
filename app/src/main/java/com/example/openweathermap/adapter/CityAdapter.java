@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 /**
  * 용도품 입고 화면용 리스트 어뎁터
  */
-public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder>{
+public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
 
     private ArrayList<City> mItems = new ArrayList<City>();
     private OnItemClickListener mOnItemClickListener;
@@ -31,9 +32,9 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder>{
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //인플레이션을 통해 뷰 객체 만들기
-        Context context = parent.getContext() ;
+        Context context = parent.getContext();
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_city, parent, false);
         return new ViewHolder(view, mOnItemClickListener); //뷰홀더 객체를 생성
@@ -69,7 +70,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder>{
     /**
      * 아이템 뷰를 저장하는 뷰홀더 클래스.
      */
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvCountryCode, tvCityName;
         private OnItemClickListener onItemClickListener;
         private int mPosition;
@@ -100,7 +101,12 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder>{
 
         @Override
         public void onClick(View view) {
-            onItemClickListener.onItemClick(mCity.getId());
+
+            if (!mCity.getCountry().isEmpty()) {
+                onItemClickListener.onItemClick(mCity.getId());
+            } else {
+              //TODO 국가가 아닌 대륙입니다.
+            }
         }
     }
 }
