@@ -17,4 +17,7 @@
 
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Material TextInputLayout,TextInputEditText 관련 스타일 -->
+    <style name="MaterialAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
 </resources>

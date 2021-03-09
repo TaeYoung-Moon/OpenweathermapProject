@@ -28,8 +28,8 @@ public class RetrofitClient {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Config.API_URL) //api의 baseURL
-                .addConverterFactory(GsonConverterFactory.create()) // 나는 데이터를 자동으로 컨버팅할 수 있게 GsonFactory를 씀
+                .baseUrl(Config.API_URL) // OPEN API 사이트 baseURL
+                .addConverterFactory(GsonConverterFactory.create()) // 데이터를 자동으로 컨버팅할 수 있는 GsonFactory 활용
                 .client(client)
                 .build();
 

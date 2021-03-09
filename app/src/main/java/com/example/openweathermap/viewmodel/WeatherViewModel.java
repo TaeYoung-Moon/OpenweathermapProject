@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide;
 import com.example.openweathermap.comm.Config;
 import com.example.openweathermap.comm.RetrofitClient;
 import com.example.openweathermap.listener.OnIntentListener;
-import com.example.openweathermap.listener.OnItemClickListener;
 import com.example.openweathermap.model.CityInfo;
 import com.example.openweathermap.model.DescriptionKo;
 import com.example.openweathermap.model.WindType;

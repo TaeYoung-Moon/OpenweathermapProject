@@ -4,28 +4,32 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.openweathermap.listener.OnItemClickListener;
 import com.example.openweathermap.R;
+import com.example.openweathermap.listener.OnItemClickListener;
 import com.example.openweathermap.model.City;
+import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
 import java.util.ArrayList;
 
 /**
  * 용도품 입고 화면용 리스트 어뎁터
  */
-public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
+public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> implements Filterable, FastScrollRecyclerView.SectionedAdapter {
 
-    private ArrayList<City> mItems = new ArrayList<City>();
+    private ArrayList<City> mItems;
+    private ArrayList<City> mFilteredItems;
     private OnItemClickListener mOnItemClickListener;
 
     public CityAdapter(ArrayList<City> list, OnItemClickListener onItemClickListener) {
         this.mItems = list;
+        this.mFilteredItems = list;
         this.mOnItemClickListener = onItemClickListener;
     }
 
@@ -49,7 +53,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        City item = mItems.get(position);
+        City item = mFilteredItems.get(position);
 
 
         //뷰 홀더에 아이템 전달
@@ -63,7 +67,49 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
      */
     @Override
     public int getItemCount() {
-        return this.mItems.size();
+        return this.mFilteredItems.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    mFilteredItems = mItems;
+                } else {
+                    ArrayList<City> filteringList = new ArrayList<>();
+                    for (City city : mItems) {
+                        if (city.getName().toLowerCase().contains(charString.toLowerCase())) {
+                            filteringList.add(city);
+                        }
+                    }
+                    mFilteredItems = filteringList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mFilteredItems;
+
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                mFilteredItems = (ArrayList<City>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+    @NonNull
+    @Override
+    public String getSectionName(int position) {
+//        return String.format("%d", position + 1);
+        if (mFilteredItems.get(position).getCountry().isEmpty()) {
+            return String.valueOf(mFilteredItems.get(position).getCountry());
+        } else {
+            return String.valueOf(mFilteredItems.get(position).getCountry().charAt(0));
+        }
     }
 
 
@@ -93,7 +139,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
 
         public void setItem(City item) {
             mPosition = getAdapterPosition();
-            mCity = mItems.get(mPosition);
+            mCity = mFilteredItems.get(mPosition);
 
             tvCountryCode.setText(item.getCountry());
             tvCityName.setText(item.getName());
@@ -105,8 +151,9 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
             if (!mCity.getCountry().isEmpty()) {
                 onItemClickListener.onItemClick(mCity.getId());
             } else {
-              //TODO 국가가 아닌 대륙입니다.
+                //TODO 국가가 아닌 대륙입니다.
             }
         }
     }
 }
+

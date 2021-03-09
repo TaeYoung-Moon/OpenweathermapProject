@@ -1,7 +1,6 @@
 package com.example.openweathermap.viewmodel;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import androidx.lifecycle.ViewModel;
 
@@ -25,9 +24,9 @@ public class MainViewModel extends ViewModel {
         this.mContext = context;
     }
 
-    public void onSearchClicked() {
-        Toast.makeText(mContext, "test", Toast.LENGTH_LONG).show();
-    }
+//    public void onSearchClicked() {
+//        Toast.makeText(mContext, "test", Toast.LENGTH_LONG).show();
+//    }
 
 //    public void onItemClick() {
 //        onItemClickListener.onItemClick();

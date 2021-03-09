@@ -55,6 +55,8 @@ dependencies {
 
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 
+    implementation 'com.simplecityapps:recyclerview-fastscroll:2.0.1'
+
     // ViewModel
     def lifecycle_version = "2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Openweathermap</string>
+
+    <string name="search_hint">도시 명을 입력하세요.</string>
+    <string name="city_name">도시 명</string>
+    <string name="counrty_code">국가 코드</string>
+
+    <string name="property_wind">Wind (풍속, 풍향)</string>
+    <string name="property_pressure">Pressure (기압)</string>
+    <string name="property_humidity">Humidity (습도)</string>
+    <string name="property_visibility">Visibility (가시성)</string>
 </resources>

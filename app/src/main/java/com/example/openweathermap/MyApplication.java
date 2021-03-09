@@ -21,14 +21,6 @@ public class MyApplication extends Application {
             }
         });
 
-//         Debug 모드일때만 Stetho init
-//        if (BuildConfig.DEBUG) Stetho.initializeWithDefaults(this);
-//
-//         Joda-Time 이니셜라이징
-//        JodaTimeAndroid.init(this);
-//
-//        Hawk.init(context).build();
-
     }
 
 }

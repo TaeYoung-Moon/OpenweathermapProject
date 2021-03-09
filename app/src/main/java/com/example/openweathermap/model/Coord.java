@@ -1,7 +1,11 @@
 package com.example.openweathermap.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Coord {
+    @SerializedName("lon")
     private float lon;
+    @SerializedName("lat")
     private float lat;
 
     @Override
