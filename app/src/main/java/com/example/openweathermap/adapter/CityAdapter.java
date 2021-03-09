@@ -104,7 +104,6 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
     @NonNull
     @Override
     public String getSectionName(int position) {
-//        return String.format("%d", position + 1);
         if (mFilteredItems.get(position).getCountry().isEmpty()) {
             return String.valueOf(mFilteredItems.get(position).getCountry());
         } else {
