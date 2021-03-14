@@ -6,6 +6,7 @@
 
     <!-- 레이아웃 데이터 결합 -->
     <data>
+
         <variable
             name="viewModel"
             type="com.example.openweathermap.viewmodel.MainViewModel" />
@@ -13,27 +14,30 @@
 
 
     <LinearLayout
-        android:focusable="true"
-        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-
+        android:clickable="true"
+        android:focusable="true"
         android:orientation="horizontal">
 
-        <androidx.cardview.widget.CardView
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_car_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardBackgroundColor="@color/White"
             app:cardCornerRadius="10dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
+            app:strokeColor="@color/Orange3"
+            app:strokeWidth="1dp"
             card_view:cardCornerRadius="4dp"
             card_view:cardElevation="5dp">
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:orientation="horizontal"
                 android:weightSum="2">
 
@@ -46,7 +50,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:padding="5dp"
                     android:text="국가이름"
-                    android:textColor="@color/Black"
+                    android:textColor="@color/Orange3"
                     android:textSize="16sp" />
 
                 <View
@@ -66,14 +70,14 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:padding="5dp"
                     android:text="도시이름"
-                    android:textColor="@color/DimGray"
+                    android:textColor="@color/Orange3"
                     android:textSize="16sp" />
 
 
             </LinearLayout>
 
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
     </LinearLayout>

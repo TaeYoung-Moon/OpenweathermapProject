@@ -18,7 +18,6 @@ import com.example.openweathermap.util.JsonUtil;
 import com.example.openweathermap.viewmodel.MainViewModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.orhanobut.logger.Logger;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     protected void onResume() {
         super.onResume();
         binding.tieSearch.setText("");
+        binding.tieSearch.clearFocus();
     }
 
     public void init() {
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         }.getType();
         ArrayList<City> cities = new Gson().fromJson(cityList, listType);
 
-        Collections.sort(cities, (obj1, obj2) -> obj1.getCountry().compareTo(obj2.getCountry()));
+        Collections.sort(cities, (obj1, obj2) -> obj1.getName().compareTo(obj2.getName()));
 
         // 뷰 어뎁터 설정
         mCityAdapter = new CityAdapter(cities, this);
@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         });
 
         binding.tieSearch.addTextChangedListener(this);
-
     }
 
     @Override
@@ -88,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        Logger.d("## onTextChanged ==> " + charSequence.toString());
         mCityAdapter.getFilter().filter(charSequence);
     }
 

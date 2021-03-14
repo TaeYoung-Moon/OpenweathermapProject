@@ -38,8 +38,9 @@ public class WeatherViewModel extends ViewModel {
 
     public static ObservableField<String> iconUrl = new ObservableField<>();
 
-    private OnIntentListener onIntentListener;
+    private static OnIntentListener onIntentListener;
     private City mCity = new City();
+
 
     public WeatherViewModel() {
 
@@ -62,7 +63,6 @@ public class WeatherViewModel extends ViewModel {
 
                     String mIconUrl = Config.WEATHER_ICON_BASE_URL + cityInfo.getWeathers().get(0).getIcon() + Config.WEATHER_ICON_EXTENSION;
                     Logger.d("## mIconUrl ==> " + mIconUrl);
-
                     initCityInfo(cityInfo, mIconUrl);
 
                 }
@@ -80,6 +80,7 @@ public class WeatherViewModel extends ViewModel {
     public void initCityInfo(CityInfo cityInfo, String url) {
         Logger.d("## initCityInfo cityInfo ==> " + cityInfo.toString());
 
+        iconUrl.set(url);
         country.set(mCity.getCountryName(cityInfo.getSys().getCountry()));
         description.set(getDescriptionKo(cityInfo.getWeathers().get(0).getDescription()));
         temp.set(Math.round(tempConversion(cityInfo.getMain().getTemp())) + " ℃");
@@ -91,10 +92,8 @@ public class WeatherViewModel extends ViewModel {
         humidity.set(" :    " + cityInfo.getMain().getHumidity() + "%");
         visibility.set(" :    " + meterToKilometer(cityInfo.getVisibility()) + "km");
         speedDeg.set(" :     " + cityInfo.getWind().getSpeed() + "m/s" + " " + getWindDirection(cityInfo.getWind().getDeg()));
-        iconUrl.set(url);
 
         onIntentListener.onIntent();
-
     }
 
     /**
@@ -126,6 +125,7 @@ public class WeatherViewModel extends ViewModel {
 
     /**
      * 날씨 상세정보 한글로 변환
+     *
      * @param description
      * @return
      */
@@ -137,8 +137,11 @@ public class WeatherViewModel extends ViewModel {
     @BindingAdapter({"imageUrl"})
     public static void loadImage(ImageView imageView, String imageUrl) {
         Glide.with(imageView.getContext())
+                .asBitmap()
+                .onlyRetrieveFromCache(true)
                 .load(imageUrl)
-                .centerCrop()
                 .into(imageView);
     }
+
+
 }

@@ -5,16 +5,6 @@ import com.example.openweathermap.util.StringUtil;
 import java.util.Locale;
 
 public class City {
-    /**
-     * {
-     * "id": 707860,
-     * "name": "Hurzuf",
-     * "country": "UA",
-     * "coord": {
-     * "lon": 34.283333,
-     * "lat": 44.549999
-     * }
-     */
 
     private String id;
     private String name;

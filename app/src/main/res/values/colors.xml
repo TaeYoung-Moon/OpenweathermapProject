@@ -187,6 +187,8 @@
     <color name="Thistle">#FFd8bfd8</color>
     <color name="Fuchsia">#FFFF00FF</color>
 
+    <color name="Orange3">#FF5722</color>
+
     <!-- 투명도 계산
       100% - FF
       95% - F2

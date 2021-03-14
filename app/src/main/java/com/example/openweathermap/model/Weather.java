@@ -54,14 +54,4 @@ public class Weather {
         this.icon = icon;
     }
 
-//    @BindingAdapter({"imageUrl"})
-//    public static void loadImage(final ImageView imageView, final String imageUrl) {
-//        Logger.d("## imageUrl ==> ", imageUrl);
-//        // 이미지는 Glide라는 라이브러리를 사용해 데이터를 설정한다
-//        Glide.with(imageView.getContext())
-//                .load(imageUrl)
-//                .centerCrop()
-//                .placeholder(R.drawable.ic_launcher_background)
-//                .into(imageView);
-//    }
 }

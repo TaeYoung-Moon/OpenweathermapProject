@@ -29,11 +29,11 @@
             android:layout_marginRight="3dp"
             android:layout_weight="1"
             android:hint="@string/search_hint"
-            app:boxStrokeColor="@color/Chocolate"
+            app:boxStrokeColor="@color/Orange3"
             app:endIconMode="clear_text"
-            app:hintTextColor="@color/Chocolate"
+            app:hintTextColor="@color/Orange3"
             app:startIconDrawable="@drawable/baseline_search_black_18"
-            app:startIconTint="@color/Chocolate">
+            app:startIconTint="@color/Orange3">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tie_search"
@@ -54,10 +54,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/baseline_public_black_18"
+                android:drawableTint="@color/Orange3"
                 android:gravity="center_horizontal|center_vertical"
                 android:paddingLeft="20dp"
-                android:text="@string/counrty_code"
-                android:textColor="@color/black"
+                android:text="@string/counrty_name"
+                android:textColor="@color/DimGray"
                 android:textStyle="bold">
 
             </TextView>
@@ -67,10 +68,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/baseline_apartment_black_18"
+                android:drawableTint="@color/Orange3"
                 android:gravity="center_horizontal|center_vertical"
                 android:paddingLeft="20dp"
                 android:text="@string/city_name"
-                android:textColor="@color/black"
+                android:textColor="@color/DimGray"
                 android:textStyle="bold">
 
             </TextView>
@@ -98,9 +100,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scrollbars="vertical"
-                    app:fastScrollPopupBgColor="@color/Chocolate"
+                    app:fastScrollPopupBgColor="@color/Orange3"
                     app:fastScrollPopupTextColor="@android:color/primary_text_dark"
-                    app:fastScrollThumbColor="@color/Chocolate"
+                    app:fastScrollThumbColor="@color/Orange3"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -18,14 +18,12 @@ import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
 import java.util.ArrayList;
 
-/**
- * 용도품 입고 화면용 리스트 어뎁터
- */
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> implements Filterable, FastScrollRecyclerView.SectionedAdapter {
 
     private ArrayList<City> mItems;
     private ArrayList<City> mFilteredItems;
     private OnItemClickListener mOnItemClickListener;
+    private Context mContext;
 
     public CityAdapter(ArrayList<City> list, OnItemClickListener onItemClickListener) {
         this.mItems = list;
@@ -38,19 +36,12 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //인플레이션을 통해 뷰 객체 만들기
-        Context context = parent.getContext();
+        mContext = parent.getContext();
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_city, parent, false);
         return new ViewHolder(view, mOnItemClickListener); //뷰홀더 객체를 생성
     }
 
-
-    /**
-     * 아이템을 뷰 홀더에 바인딩
-     *
-     * @param viewHolder
-     * @param position
-     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         City item = mFilteredItems.get(position);
@@ -60,11 +51,6 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
         viewHolder.setItem(item);
     }
 
-    /**
-     * 아이템 수 반환
-     *
-     * @return
-     */
     @Override
     public int getItemCount() {
         return this.mFilteredItems.size();
@@ -76,7 +62,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
-                if (charString.isEmpty()) { 
+                if (charString.isEmpty()) {
                     mFilteredItems = mItems;
                 } else {
                     ArrayList<City> filteringList = new ArrayList<>();
@@ -104,10 +90,10 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
     @NonNull
     @Override
     public String getSectionName(int position) {
-        if (mFilteredItems.get(position).getCountry().isEmpty()) {
-            return String.valueOf(mFilteredItems.get(position).getCountry());
+        if (mFilteredItems.get(position).getName().isEmpty()) {
+            return String.valueOf(mFilteredItems.get(position).getName());
         } else {
-            return String.valueOf(mFilteredItems.get(position).getCountry().charAt(0));
+            return String.valueOf(mFilteredItems.get(position).getName().charAt(0));
         }
     }
 
@@ -141,6 +127,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
             mCity = mFilteredItems.get(mPosition);
             tvCountryCode.setText(item.getCountryName(item.getCountry()));
             tvCityName.setText(item.getName());
+
         }
 
         @Override

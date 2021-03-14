@@ -22,11 +22,6 @@ public class LoadingActivity extends AppCompatActivity implements OnIntentListen
     private AcitivtyLoadingBinding binding; // 데이터 바인딩 작업
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
