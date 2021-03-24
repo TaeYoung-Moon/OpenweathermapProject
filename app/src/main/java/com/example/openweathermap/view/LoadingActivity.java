@@ -19,7 +19,7 @@ public class LoadingActivity extends AppCompatActivity implements OnIntentListen
     private WeatherViewModel weatherViewModel;
     private LoadingViewModel loadingViewModel;
     private ViewModelProvider.AndroidViewModelFactory viewModelFactory;
-    private AcitivtyLoadingBinding binding; // 데이터 바인딩 작업
+    private AcitivtyLoadingBinding binding; // 데이터 바인딩
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
